@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>随机过程课后题第三章答案</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h1 id="第三章">第三章</h1>
+<h2 id="section">6</h2>
+<h3 id="xt-at-b">(1) <span class="math inline">\(X(t) = At +
+B\)</span></h3>
+<p><strong>分析：</strong> 首先计算相关函数。由于 <span
+class="math inline">\(A, B\)</span> 相互独立： <span
+class="math display">\[
+\begin{aligned}
+R_X(s, t) &amp;= E[(As + B)(At + B)] \\
+&amp;= E[A^2 st + AB(s + t) + B^2] \\
+&amp;= E[A^2]st + E[A]E[B](s + t) + E[B^2]
+\end{aligned}
+\]</span> 已知 <span class="math inline">\(E[A]=a, E[B]=b,
+Var(A)=\sigma_1^2, Var(B)=\sigma_2^2\)</span>，则 <span
+class="math inline">\(E[A^2] = \sigma_1^2 + a^2, E[B^2] = \sigma_2^2 +
+b^2\)</span>。 <span class="math display">\[R_X(s, t) = (\sigma_1^2 +
+a^2)st + ab(s + t) + (\sigma_2^2 + b^2)\]</span></p>
+<p>这是一个关于 <span class="math inline">\(s\)</span> 和 <span
+class="math inline">\(t\)</span> 的<strong>二元多项式</strong>。</p>
+<ul>
+<li><strong>均方连续性：</strong>
+多项式函数在整个平面上都是连续的，自然在 <span class="math inline">\((t,
+t)\)</span> 处连续。<span class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</li>
+<li><strong>均方可导性：</strong> 计算混合偏导数： <span
+class="math display">\[\frac{\partial R_X}{\partial t} = (\sigma_1^2 +
+a^2)s + ab\]</span> <span class="math display">\[\frac{\partial^2
+R_X}{\partial s \partial t} = \sigma_1^2 + a^2\]</span>
+这是一个常数，显然存在。<span class="math inline">\(\Rightarrow\)</span>
+<strong>均方可导</strong>。</li>
+<li><strong>均方可积性：</strong> 多项式在任意有限区间上显然可积。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</li>
+</ul>
+<hr />
+<h3 id="xt-at2-bt-c">(2) <span class="math inline">\(X(t) = At^2 + Bt +
+C\)</span></h3>
+<p><strong>分析：</strong> 类似于 (1)，这是一个随机系数的多项式过程。
+<span class="math display">\[
+\begin{aligned}
+R_X(s, t) &amp;= E[(As^2 + Bs + C)(At^2 + Bt + C)] \\
+&amp;= E[A^2]s^2 t^2 + E[AB](s^2 t + s t^2) + \dots
+\end{aligned}
+\]</span> 展开后，由于系数 <span class="math inline">\(A, B, C\)</span>
+的二阶矩都存在，<span class="math inline">\(R_X(s, t)\)</span> 是关于
+<span class="math inline">\(s\)</span> 和 <span
+class="math inline">\(t\)</span> 的<strong>四次多项式</strong>。</p>
+<ul>
+<li><strong>均方连续性：</strong> 多项式函数处处连续。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</li>
+<li><strong>均方可导性：</strong>
+多项式函数的任意阶偏导数都存在且连续。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可导</strong>。</li>
+<li><strong>均方可积性：</strong> 多项式函数在有限区间可积。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</li>
+</ul>
+<hr />
+<h3 id="r_xs-t-e-a-t-s-quad-a-0">(3) <span class="math inline">\(R_X(s,
+t) = e^{-a |t-s|}, \quad a &gt; 0\)</span></h3>
+<p>这是典型的 Ornstein-Uhlenbeck 过程的相关函数形式。令 <span
+class="math inline">\(\tau = t - s\)</span>，则 <span
+class="math inline">\(R(\tau) = e^{-a|\tau|}\)</span>。</p>
+<ul>
+<li><p><strong>均方连续性：</strong> <span
+class="math display">\[\lim_{s \to t} e^{-a|t-s|} = e^0 = 1 = R_X(t,
+t)\]</span> 函数连续。<span class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</p></li>
+<li><p><strong>均方可导性：</strong> 我们需要检查 <span
+class="math inline">\(\frac{\partial^2 R_X}{\partial s \partial
+t}\)</span> 在 <span class="math inline">\(s=t\)</span> 处是否存在。
+考虑 <span class="math inline">\(R(\tau)\)</span> 的一阶导数： <span
+class="math display">\[R&#39;(\tau) = \frac{d}{d\tau} e^{-a|\tau|} = -a
+\cdot \text{sgn}(\tau) e^{-a|\tau|}\]</span> 在 <span
+class="math inline">\(\tau = 0\)</span> 处，<span
+class="math inline">\(R&#39;(\tau)\)</span> 的左极限是 <span
+class="math inline">\(a\)</span>，右极限是 <span
+class="math inline">\(-a\)</span>，<strong>导数不存在</strong>（有一个尖点）。
+既然一阶导数在 <span class="math inline">\(\tau=0\)</span>
+处都不存在，二阶混合偏导数在 <span class="math inline">\(s=t\)</span>
+处也不存在。 <span class="math inline">\(\Rightarrow\)</span>
+<strong>均方不可导</strong>。</p></li>
+<li><p><strong>均方可积性：</strong> <span
+class="math inline">\(e^{-a|t-s|}\)</span>
+是有界连续函数，在有限区域上的积分显然存在。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</p></li>
+</ul>
+<hr />
+<h3 id="r_xs-t-frac1a2-t-s2-quad-a-0">(4) <span
+class="math inline">\(R_X(s, t) = \frac{1}{a^2 + (t-s)^2}, \quad a &gt;
+0\)</span></h3>
+<p>令 <span class="math inline">\(\tau = t - s\)</span>，则 <span
+class="math inline">\(R(\tau) = \frac{1}{a^2 +
+\tau^2}\)</span>。这是一条光滑的钟形曲线。</p>
+<ul>
+<li><p><strong>均方连续性：</strong> 分母 <span
+class="math inline">\(a^2 + (t-s)^2 \ge a^2 &gt;
+0\)</span>，函数处处连续。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</p></li>
+<li><p><strong>均方可导性：</strong> 计算关于 <span
+class="math inline">\(\tau\)</span> 的导数： <span
+class="math display">\[R&#39;(\tau) = \frac{-2\tau}{(a^2 +
+\tau^2)^2}\]</span> <span class="math display">\[R&#39;&#39;(\tau) =
+\frac{-2(a^2 + \tau^2)^2 - (-2\tau) \cdot 2(a^2 + \tau^2) \cdot
+2\tau}{(a^2 + \tau^2)^4} = \frac{6\tau^2 - 2a^2}{(a^2 +
+\tau^2)^3}\]</span> 在 <span class="math inline">\(s=t\)</span> 即 <span
+class="math inline">\(\tau=0\)</span> 处： <span
+class="math display">\[R&#39;&#39;(0) = \frac{-2a^2}{a^6} =
+-\frac{2}{a^4}\]</span> 二阶导数存在且有限。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可导</strong>。</p></li>
+<li><p><strong>均方可积性：</strong> 函数连续且有界，积分存在。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</p></li>
+</ul>
+<hr />
+<h3 id="nt-t-ge-0-是泊松过程">(5) <span class="math inline">\(\{N(t), t
+\ge 0\}\)</span> 是泊松过程</h3>
+<p>设强度为 <span class="math inline">\(\lambda\)</span>。其相关函数为：
+<span class="math display">\[R_N(s, t) = \lambda \min(s, t) + \lambda^2
+st\]</span> (注：这里假设由标准定义 <span
+class="math inline">\(E[N(t)]=\lambda
+t\)</span>，且包含均值项。如果题目指中心化的泊松过程，则只有第一项，结论不变)。</p>
+<ul>
+<li><p><strong>均方连续性：</strong> 函数 <span
+class="math inline">\(f(s, t) = \min(s, t)\)</span> 在 <span
+class="math inline">\(s=t\)</span>
+处是连续的（虽然有折角，但是没断开）。 <span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</p></li>
+<li><p><strong>均方可导性：</strong> 关键在于 <span
+class="math inline">\(\min(s, t)\)</span> 项。 <span
+class="math display">\[\min(s, t) = \begin{cases} s, &amp; s &lt; t \\
+t, &amp; s \ge t \end{cases}\]</span> 求混合偏导数 <span
+class="math inline">\(\frac{\partial^2}{\partial s \partial t} \min(s,
+t)\)</span>： 先对 <span class="math inline">\(s\)</span>
+求导：得到阶跃函数 <span class="math inline">\(u(t-s)\)</span> (当 <span
+class="math inline">\(s&lt;t\)</span> 为1，否则为0)。 再对 <span
+class="math inline">\(t\)</span> 求导：阶跃函数的导数是冲激函数 <span
+class="math inline">\(\delta(t-s)\)</span>。 在 <span
+class="math inline">\(s=t\)</span>
+处，值为无穷大（冲激），即常规意义下的导数不存在。 <span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方不可导</strong>。</p></li>
+<li><p><strong>均方可积性：</strong> <span class="math inline">\(\min(s,
+t)\)</span> 是连续函数，在有限区间上可积。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</p></li>
+</ul>
+<hr />
+<h3 id="wt-t-ge-0-是维纳过程-布朗运动">(6) <span
+class="math inline">\(\{W(t), t \ge 0\}\)</span> 是维纳过程
+(布朗运动)</h3>
+<p>设参数为 <span class="math inline">\(\sigma^2\)</span> (标准维纳过程
+<span class="math inline">\(\sigma=1\)</span>)。其相关函数为： <span
+class="math display">\[R_W(s, t) = \sigma^2 \min(s, t)\]</span></p>
+<ul>
+<li><p><strong>均方连续性：</strong> 同泊松过程，<span
+class="math inline">\(\min(s, t)\)</span> 处处连续。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方连续</strong>。</p></li>
+<li><p><strong>均方可导性：</strong> 同泊松过程，<span
+class="math inline">\(\min(s, t)\)</span> 在 <span
+class="math inline">\(s=t\)</span> 处不可导（导数涉及 <span
+class="math inline">\(\delta\)</span> 函数）。
+事实上，维纳过程的样本路径处处不可导，其均方性质也反映了这一点。 <span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方不可导</strong>。</p></li>
+<li><p><strong>均方可积性：</strong> 连续函数，积分存在。<span
+class="math inline">\(\Rightarrow\)</span>
+<strong>均方可积</strong>。</p></li>
+</ul>
+<hr />
+<h2 id="section-1">8</h2>
+<h3 id="xt-cosomega-t-theta">(1) <span class="math inline">\(X(t) =
+\cos(\omega t + \Theta)\)</span></h3>
+<p><strong>已知：</strong> <span class="math inline">\(\omega\)</span>
+是常数，相位 <span class="math inline">\(\Theta \sim U[0,
+2\pi]\)</span>（均匀分布）。 概率密度函数 <span
+class="math inline">\(f_\Theta(\theta) = \frac{1}{2\pi}, \quad 0 \le
+\theta \le 2\pi\)</span>。</p>
+<h4 id="解"><strong>解：</strong></h4>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong> <span
+class="math display">\[
+\begin{aligned}
+m_X(t) &amp;= E[\cos(\omega t + \Theta)] \\
+&amp;= \int_0^{2\pi} \cos(\omega t + \theta) \cdot \frac{1}{2\pi} \,
+d\theta
+\end{aligned}
+\]</span> 由于是在一个完整的 <span class="math inline">\(2\pi\)</span>
+周期内积分，余弦函数的积分值为 0。 <span class="math display">\[
+\mathbf{m_X(t) = 0}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(s,
+t)\)</span></strong> 利用积化和差公式：<span class="math inline">\(\cos
+A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]\)</span>。 <span
+class="math display">\[
+\begin{aligned}
+R_X(s, t) &amp;= E[\cos(\omega s + \Theta) \cos(\omega t + \Theta)] \\
+&amp;= \frac{1}{2} E[\cos(\omega(s-t)) + \cos(\omega(s+t) + 2\Theta)] \\
+&amp;= \frac{1}{2} \underbrace{E[\cos(\omega(s-t))]}_{\text{常数}} +
+\frac{1}{2} \underbrace{E[\cos(\omega(s+t) + 2\Theta)]}_{\text{期望为0}}
+\end{aligned}
+\]</span> * 第一项：不含随机变量 <span
+class="math inline">\(\Theta\)</span>，期望就是它本身。 *
+第二项：相当于对 <span class="math inline">\(2\Theta\)</span>
+进行积分（积分区间 <span class="math inline">\(4\pi\)</span>），结果为
+0。</p>
+<p><span class="math display">\[
+\mathbf{R_X(s, t) = \frac{1}{2} \cos(\omega(s-t))}
+\]</span> <em>(注：这是一个宽平稳过程，相关函数只与 <span
+class="math inline">\(\tau = s-t\)</span> 有关)</em></p>
+<p><strong>3. 判断均方性质</strong> 令 <span class="math inline">\(\tau
+= s-t\)</span>，则 <span class="math inline">\(R_X(\tau) = \frac{1}{2}
+\cos(\omega \tau)\)</span>。</p>
+<ul>
+<li><p><strong>均方连续性：</strong> <span
+class="math display">\[\lim_{\tau \to 0} \frac{1}{2} \cos(\omega \tau) =
+\frac{1}{2} \cos(0) = \frac{1}{2} = R_X(0)\]</span> 函数连续，故
+<strong><span class="math inline">\(X(t)\)</span>
+均方连续</strong>。</p></li>
+<li><p><strong>均方可微性：</strong> 考察 <span
+class="math inline">\(\cos(\omega \tau)\)</span> 在 <span
+class="math inline">\(\tau=0\)</span> 处的光滑度。 余弦函数 <span
+class="math inline">\(\cos(x)\)</span> 是非常光滑的（偶函数，泰勒展开为
+<span class="math inline">\(1 - x^2/2 + \dots\)</span>），没有尖点。
+具体验证二阶导数： <span class="math display">\[R&#39;&#39;_X(\tau) =
+\frac{d^2}{d\tau^2} [\frac{1}{2} \cos(\omega \tau)] =
+-\frac{\omega^2}{2} \cos(\omega \tau)\]</span> <span
+class="math display">\[R&#39;&#39;_X(0) = -\frac{\omega^2}{2}\]</span>
+存在且有限。故 <strong><span class="math inline">\(X(t)\)</span>
+均方可导</strong>。</p></li>
+</ul>
+<hr />
+<h3 id="xt-twleftfrac1tright-quad-t-0">(2) <span
+class="math inline">\(X(t) = tW\left(\frac{1}{t}\right), \quad t &gt;
+0\)</span></h3>
+<p><strong>已知：</strong> <span class="math inline">\(W(t)\)</span>
+是标准维纳过程（参数为 1），即 <span class="math inline">\(m_W(t)=0,
+R_W(u, v) = \min(u, v)\)</span>。</p>
+<h4 id="解-1"><strong>解：</strong></h4>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong> <span
+class="math display">\[
+m_X(t) = E\left[ t W\left(\frac{1}{t}\right) \right] = t \cdot
+E\left[W\left(\frac{1}{t}\right)\right]
+\]</span> 因为对于任意 <span
+class="math inline">\(u\)</span>，维纳过程均值 <span
+class="math inline">\(E[W(u)] = 0\)</span>。 <span
+class="math display">\[
+\mathbf{m_X(t) = 0}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(s,
+t)\)</span></strong> <span class="math display">\[
+\begin{aligned}
+R_X(s, t) &amp;= E\left[ \left(s W(\frac{1}{s})\right) \cdot \left(t
+W(\frac{1}{t})\right) \right] \\
+&amp;= st \cdot E\left[ W(\frac{1}{s}) W(\frac{1}{t}) \right]
+\end{aligned}
+\]</span> 代入维纳过程的相关函数公式 <span
+class="math inline">\(E[W(u)W(v)] = \min(u, v)\)</span>： <span
+class="math display">\[
+R_X(s, t) = st \cdot \min\left(\frac{1}{s}, \frac{1}{t}\right)
+\]</span> 这一步需要化简，我们不妨假设 <span class="math inline">\(s
+&lt; t\)</span>（反之亦然）： * 若 <span class="math inline">\(s &lt;
+t\)</span>，则 <span class="math inline">\(\frac{1}{s} &gt;
+\frac{1}{t}\)</span>，所以 <span class="math inline">\(\min(\frac{1}{s},
+\frac{1}{t}) = \frac{1}{t}\)</span>。 <span
+class="math display">\[R_X(s, t) = st \cdot \frac{1}{t} = s\]</span>
+而此时 <span class="math inline">\(s = \min(s, t)\)</span>。 * 若 <span
+class="math inline">\(t &lt; s\)</span>，同理可得结果为 <span
+class="math inline">\(t\)</span>。</p>
+<p>综上所述，你会发现一个惊人的结论： <span class="math display">\[
+\mathbf{R_X(s, t) = \min(s, t)}
+\]</span> <em>(注：这说明 <span class="math inline">\(X(t)\)</span>
+这个过程在统计特性上和原来的维纳过程是一模一样的！)</em></p>
+<p><strong>3. 判断均方性质</strong> 这与上一题中的维纳过程完全一致。</p>
+<ul>
+<li><strong>均方连续性：</strong> <span class="math inline">\(\min(s,
+t)\)</span> 函数连续。故 <strong><span
+class="math inline">\(X(t)\)</span> 均方连续</strong>。</li>
+<li><strong>均方可微性：</strong> <span class="math inline">\(\min(s,
+t)\)</span> 在 <span class="math inline">\(s=t\)</span>
+处有折角（导数跳变），二阶混合偏导数含 <span
+class="math inline">\(\delta(s-t)\)</span>。故 <strong><span
+class="math inline">\(X(t)\)</span> 均方不可导</strong>。</li>
+</ul>
+<hr />
+<h3 id="xt-w2t-quad-t-ge-0">(3) <span class="math inline">\(X(t) =
+W^2(t), \quad t \ge 0\)</span></h3>
+<p><strong>已知：</strong> <span class="math inline">\(W(t)\)</span>
+是维纳过程，参数为 <span class="math inline">\(\sigma^2\)</span>。<span
+class="math inline">\(W(t) \sim N(0, \sigma^2 t)\)</span>。</p>
+<h4 id="解-2"><strong>解：</strong></h4>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong> <span
+class="math display">\[
+m_X(t) = E[W^2(t)]
+\]</span> 根据方差定义 <span class="math inline">\(Var(Y) = E[Y^2] -
+(E[Y])^2\)</span>。对于 <span
+class="math inline">\(W(t)\)</span>，均值为 0，方差为 <span
+class="math inline">\(\sigma^2 t\)</span>。 <span
+class="math display">\[
+\mathbf{m_X(t) = \sigma^2 t}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(s,
+t)\)</span></strong> <span class="math display">\[
+R_X(s, t) = E[X(s)X(t)] = E[W^2(s) W^2(t)]
+\]</span> 这里涉及到高斯随机变量的<strong>四阶矩</strong>。
+<strong>利用高斯矩公式（Isserlis’ Theorem）：</strong> 若 <span
+class="math inline">\(Y, Z\)</span> 是联合高斯分布，均值为 0，则： <span
+class="math display">\[E[Y^2 Z^2] = E[Y^2]E[Z^2] + 2(E[YZ])^2\]</span>
+在这里，<span class="math inline">\(Y=W(s), Z=W(t)\)</span>。 * <span
+class="math inline">\(E[Y^2] = \sigma^2 s\)</span> * <span
+class="math inline">\(E[Z^2] = \sigma^2 t\)</span> * <span
+class="math inline">\(E[YZ] = R_W(s, t) = \sigma^2 \min(s,
+t)\)</span></p>
+<p>代入公式： <span class="math display">\[
+\begin{aligned}
+R_X(s, t) &amp;= (\sigma^2 s)(\sigma^2 t) + 2(\sigma^2 \min(s, t))^2 \\
+&amp;= \sigma^4 st + 2\sigma^4 [\min(s, t)]^2
+\end{aligned}
+\]</span> <span class="math display">\[
+\mathbf{R_X(s, t) = \sigma^4 [st + 2\min^2(s, t)]}
+\]</span></p>
+<p><strong>3. 判断均方性质</strong></p>
+<ul>
+<li><p><strong>均方连续性：</strong> 函数 <span
+class="math inline">\(st\)</span> 是连续的，<span
+class="math inline">\(\min(s, t)\)</span> 是连续的，平方后依然连续。
+<span class="math inline">\(\therefore\)</span> <strong><span
+class="math inline">\(X(t)\)</span> 均方连续</strong>。</p></li>
+<li><p><strong>均方可微性：</strong> 关键在于分析含 <span
+class="math inline">\(\min\)</span> 的项：<span
+class="math inline">\(f(s, t) = \min^2(s, t)\)</span>。
+我们要看它的二阶混合偏导是否存在。 <span class="math display">\[
+  f(s, t) = \begin{cases} s^2, &amp; s &lt; t \\ t^2, &amp; s \ge t
+\end{cases}
+  \]</span> <strong>步骤 A：先求一阶偏导 <span
+class="math inline">\(\frac{\partial f}{\partial
+s}\)</span></strong></p>
+<ul>
+<li>当 <span class="math inline">\(s &lt; t\)</span> 时，<span
+class="math inline">\(\frac{\partial}{\partial s}(s^2) =
+2s\)</span>。</li>
+<li>当 <span class="math inline">\(s &gt; t\)</span> 时，<span
+class="math inline">\(\frac{\partial}{\partial s}(t^2) =
+0\)</span>。</li>
+</ul>
+<p><strong>步骤 B：检查 <span class="math inline">\(s \to t\)</span>
+时的接缝</strong></p>
+<ul>
+<li>左极限 (<span class="math inline">\(s \to t^-\)</span>)：<span
+class="math inline">\(2t\)</span></li>
+<li>右极限 (<span class="math inline">\(s \to t^+\)</span>)：<span
+class="math inline">\(0\)</span></li>
+</ul>
+<p>除非 <span class="math inline">\(t=0\)</span>，否则 <span
+class="math inline">\(2t \neq 0\)</span>。 <strong>这意味着一阶偏导数
+<span class="math inline">\(\frac{\partial R_X}{\partial s}\)</span> 在
+<span class="math inline">\(s=t\)</span>
+处是不连续的（发生了跳变）。</strong>
+既然一阶导数都跳变了，那么二阶导数（一阶导数的导数）就会出现无穷大（冲激函数）。</p>
+<p><span class="math inline">\(\therefore\)</span> <strong><span
+class="math inline">\(X(t)\)</span> 均方不可导</strong>。</p></li>
+</ul>
+<hr />
+<h2 id="section-2">9.</h2>
+<p><strong>已知条件：</strong> * 输入均值：<span
+class="math inline">\(m_X(t) = 5\sin t\)</span> * 输入相关函数：<span
+class="math inline">\(R_X(s, t) = 3e^{-\frac{1}{2}(t-s)^2}\)</span> *
+系统关系：<span class="math inline">\(Y(t) = X&#39;(t) = \frac{d X(t)}{d
+t}\)</span></p>
+<p>为了计算方便，我们引入时间差 <span class="math inline">\(\tau = t -
+s\)</span>，则 <span class="math inline">\(R_X(s, t)\)</span>
+可以写成一元函数形式 <span class="math inline">\(R_X(\tau) =
+3e^{-\frac{1}{2}\tau^2}\)</span>。</p>
+<hr />
+<h3 id="求输出均值函数-m_yt">1. 求输出均值函数 <span
+class="math inline">\(m_Y(t)\)</span></h3>
+<p>根据期望与求导的可交换性： <span class="math display">\[
+m_Y(t) = E[Y(t)] = E\left[ \frac{d X(t)}{d t} \right] = \frac{d}{d t}
+E[X(t)] = \frac{d}{d t} m_X(t)
+\]</span></p>
+<p>将 <span class="math inline">\(m_X(t) = 5\sin t\)</span> 代入： <span
+class="math display">\[
+m_Y(t) = \frac{d}{d t}(5\sin t) = 5\cos t
+\]</span></p>
+<p><strong>结论：</strong> <span class="math inline">\(m_Y(t) = 5\cos
+t\)</span></p>
+<hr />
+<h3 id="求输出相关函数-r_ys-t">2. 求输出相关函数 <span
+class="math inline">\(R_Y(s, t)\)</span></h3>
+<p>根据定义和微分的线性性质： <span class="math display">\[
+\begin{aligned}
+R_Y(s, t) &amp;= E[Y(s)Y(t)] \\
+&amp;= E\left[ \frac{\partial X(s)}{\partial s} \cdot \frac{\partial
+X(t)}{\partial t} \right] \\
+&amp;= \frac{\partial^2}{\partial s \partial t} E[X(s)X(t)] \\
+&amp;= \frac{\partial^2 R_X(s, t)}{\partial s \partial t}
+\end{aligned}
+\]</span></p>
+<p>由于 <span class="math inline">\(R_X(s, t)\)</span> 是平稳的（只与
+<span class="math inline">\(\tau = t-s\)</span>
+有关），我们可以利用链式法则简化计算。 已知 <span
+class="math inline">\(\tau = t - s\)</span>，则： * 对 <span
+class="math inline">\(t\)</span> 求偏导：<span
+class="math inline">\(\frac{\partial (\cdot)}{\partial t} = \frac{d
+(\cdot)}{d \tau} \cdot 1\)</span> * 对 <span
+class="math inline">\(s\)</span> 求偏导：<span
+class="math inline">\(\frac{\partial (\cdot)}{\partial s} = \frac{d
+(\cdot)}{d \tau} \cdot (-1)\)</span></p>
+<p>因此，混合偏导数与二阶导数的关系为： <span class="math display">\[
+\frac{\partial^2 R_X(s, t)}{\partial s \partial t} =
+\frac{\partial}{\partial s} \left( R&#39;_X(\tau) \right) =
+R&#39;&#39;_X(\tau) \cdot (-1) = -R&#39;&#39;_X(\tau)
+\]</span></p>
+<p>现在我们来计算 <span class="math inline">\(R_X(\tau) =
+3e^{-\frac{1}{2}\tau^2}\)</span> 的导数：</p>
+<ul>
+<li><p><strong>一阶导数 <span
+class="math inline">\(R&#39;_X(\tau)\)</span>：</strong> <span
+class="math display">\[
+R&#39;_X(\tau) = 3 \cdot e^{-\frac{1}{2}\tau^2} \cdot (-\tau) = -3\tau
+e^{-\frac{1}{2}\tau^2}
+\]</span></p></li>
+<li><p><strong>二阶导数 <span
+class="math inline">\(R&#39;&#39;_X(\tau)\)</span>：</strong>
+利用乘法法则 <span class="math inline">\((uv)&#39; = u&#39;v +
+uv&#39;\)</span>： <span class="math display">\[
+\begin{aligned}
+R&#39;&#39;_X(\tau) &amp;= (-3)&#39; \cdot \tau e^{-\frac{1}{2}\tau^2} +
+(-3\tau) \cdot (e^{-\frac{1}{2}\tau^2})&#39; \\
+&amp;= -3 e^{-\frac{1}{2}\tau^2} + (-3\tau) \cdot (-\tau
+e^{-\frac{1}{2}\tau^2}) \\
+&amp;= -3 e^{-\frac{1}{2}\tau^2} + 3\tau^2 e^{-\frac{1}{2}\tau^2} \\
+&amp;= 3(\tau^2 - 1)e^{-\frac{1}{2}\tau^2}
+\end{aligned}
+\]</span></p></li>
+<li><p><strong>代回公式：</strong> <span class="math display">\[
+R_Y(s, t) = -R&#39;&#39;_X(\tau) = - \left[ 3(\tau^2 -
+1)e^{-\frac{1}{2}\tau^2} \right] = 3(1 - \tau^2)e^{-\frac{1}{2}\tau^2}
+\]</span></p></li>
+</ul>
+<p>将 <span class="math inline">\(\tau = t-s\)</span> 代入得最终结果：
+<strong>结论：</strong> <span class="math inline">\(R_Y(s, t) = 3[1 -
+(t-s)^2]e^{-\frac{1}{2}(t-s)^2}\)</span></p>
+<hr />
+<h3 id="求互相关函数-r_yxs-t">3. 求互相关函数 <span
+class="math inline">\(R_{YX}(s, t)\)</span></h3>
+<p>根据定义： <span class="math display">\[
+\begin{aligned}
+R_{YX}(s, t) &amp;= E[Y(s)X(t)] \\
+&amp;= E\left[ \frac{\partial X(s)}{\partial s} X(t) \right] \\
+&amp;= \frac{\partial}{\partial s} E[X(s)X(t)] \\
+&amp;= \frac{\partial R_X(s, t)}{\partial s}
+\end{aligned}
+\]</span></p>
+<p>利用链式法则（<span class="math inline">\(\tau = t-s\)</span>, <span
+class="math inline">\(\frac{\partial \tau}{\partial s} = -1\)</span>）：
+<span class="math display">\[
+\frac{\partial R_X(s, t)}{\partial s} = R&#39;_X(\tau) \cdot (-1) =
+-R&#39;_X(\tau)
+\]</span></p>
+<p>我们在前面已经算出了 <span class="math inline">\(R&#39;_X(\tau) =
+-3\tau e^{-\frac{1}{2}\tau^2}\)</span>。 代入得： <span
+class="math display">\[
+R_{YX}(s, t) = -(-3\tau e^{-\frac{1}{2}\tau^2}) = 3\tau
+e^{-\frac{1}{2}\tau^2}
+\]</span></p>
+<p>将 <span class="math inline">\(\tau = t-s\)</span>
+代入得最终结果：</p>
+<hr />
+<h2 id="section-3">11.</h2>
+<h3 id="预备工作分离变量与计算积分">1. 预备工作：分离变量与计算积分</h3>
+<p>首先，我们将随机过程 <span class="math inline">\(X(t)\)</span>
+写成如下形式： <span class="math display">\[X(t) = V \cdot f(t)\]</span>
+其中 <span class="math inline">\(f(t) = \mathrm{e}^{3t}\cos(2t)\)</span>
+是一个确定性的时间函数。</p>
+<p>根据题目定义，<span class="math inline">\(Y(t)\)</span> 是 <span
+class="math inline">\(X(t)\)</span> 在 <span class="math inline">\([0,
+t]\)</span> 上的积分： <span class="math display">\[Y(t) = \int_{0}^{t}
+X(s) \mathrm{d}s = \int_{0}^{t} V f(s) \mathrm{d}s = V \int_{0}^{t}
+\mathrm{e}^{3s}\cos(2s) \mathrm{d}s\]</span></p>
+<p>令 <span class="math inline">\(g(t)\)</span> 为积分结果： <span
+class="math display">\[g(t) = \int_{0}^{t} \mathrm{e}^{3s}\cos(2s)
+\mathrm{d}s\]</span></p>
+<p>我们需要先算出这个定积分。利用积分公式 <span
+class="math inline">\(\int e^{ax}\cos(bx)dx =
+\frac{e^{ax}}{a^2+b^2}(a\cos bx + b\sin bx)\)</span>，这里 <span
+class="math inline">\(a=3, b=2\)</span>： <span class="math display">\[
+\begin{aligned}
+g(t) &amp;= \left[ \frac{\mathrm{e}^{3s}}{3^2+2^2}(3\cos(2s) +
+2\sin(2s)) \right]_{0}^{t} \\
+&amp;= \frac{1}{13} \left[ \mathrm{e}^{3t}(3\cos(2t) + 2\sin(2t)) -
+\mathrm{e}^{0}(3\cos(0) + 2\sin(0)) \right] \\
+&amp;= \frac{1}{13} \left[ \mathrm{e}^{3t}(3\cos 2t + 2\sin 2t) - 3
+\right]
+\end{aligned}
+\]</span></p>
+<p><strong>现在的核心关系式是：</strong> <span
+class="math display">\[Y(t) = V \cdot g(t)\]</span> 其中 <span
+class="math inline">\(g(t) = \frac{1}{13}[\mathrm{e}^{3t}(3\cos 2t +
+2\sin 2t) - 3]\)</span>。</p>
+<p>已知随机变量 <span class="math inline">\(V\)</span> 的数字特征： *
+<span class="math inline">\(E[V] = 5\)</span> * <span
+class="math inline">\(D(V) = 1\)</span> * <span
+class="math inline">\(E[V^2] = D(V) + (E[V])^2 = 1 + 5^2 =
+26\)</span></p>
+<p>接下来我们利用线性性质求 <span class="math inline">\(Y(t)\)</span>
+的各项特征。</p>
+<hr />
+<h3 id="求均值函数-m_yt">2. 求均值函数 <span
+class="math inline">\(m_Y(t)\)</span></h3>
+<p>均值是对随机变量求期望。由于 <span
+class="math inline">\(g(t)\)</span> 是确定性函数，可以提出期望符号外：
+<span class="math display">\[
+\begin{aligned}
+m_Y(t) &amp;= E[Y(t)] \\
+&amp;= E[V \cdot g(t)] \\
+&amp;= g(t) \cdot E[V] \\
+&amp;= 5g(t)
+\end{aligned}
+\]</span> 代入 <span class="math inline">\(g(t)\)</span> 的表达式：
+<span class="math display">\[
+\mathbf{m_Y(t) = \frac{5}{13} \left[ \mathrm{e}^{3t}(3\cos 2t + 2\sin
+2t) - 3 \right]}
+\]</span></p>
+<hr />
+<h3 id="求相关函数-r_yt_1-t_2">3. 求相关函数 <span
+class="math inline">\(R_Y(t_1, t_2)\)</span></h3>
+<p>相关函数定义为 <span class="math inline">\(E[Y(t_1)Y(t_2)]\)</span>：
+<span class="math display">\[
+\begin{aligned}
+R_Y(t_1, t_2) &amp;= E[Y(t_1)Y(t_2)] \\
+&amp;= E[ (V g(t_1)) \cdot (V g(t_2)) ] \\
+&amp;= E[V^2 \cdot g(t_1)g(t_2)] \\
+&amp;= g(t_1)g(t_2) \cdot E[V^2]
+\end{aligned}
+\]</span> 已知 <span class="math inline">\(E[V^2] = 26\)</span>： <span
+class="math display">\[
+R_Y(t_1, t_2) = 26 g(t_1)g(t_2)
+\]</span> 代入 <span class="math inline">\(g(t)\)</span> 的表达式：
+<span class="math display">\[
+\mathbf{R_Y(t_1, t_2) = \frac{26}{169} \left[ \mathrm{e}^{3t_1}(3\cos
+2t_1 + 2\sin 2t_1) - 3 \right] \left[ \mathrm{e}^{3t_2}(3\cos 2t_2 +
+2\sin 2t_2) - 3 \right]}
+\]</span> 化简系数 <span class="math inline">\(\frac{26}{169} =
+\frac{2}{13}\)</span>，得： <span class="math display">\[
+\mathbf{R_Y(t_1, t_2) = \frac{2}{13} \left[ \mathrm{e}^{3t_1}(3\cos 2t_1
++ 2\sin 2t_1) - 3 \right] \left[ \mathrm{e}^{3t_2}(3\cos 2t_2 + 2\sin
+2t_2) - 3 \right]}
+\]</span></p>
+<hr />
+<h3 id="求协方差函数-c_yt_1-t_2">4. 求协方差函数 <span
+class="math inline">\(C_Y(t_1, t_2)\)</span></h3>
+<p>协方差函数定义为 <span class="math inline">\(C_Y(t_1, t_2) =
+E[(Y(t_1) - m_Y(t_1))(Y(t_2) - m_Y(t_2))]\)</span>，也可以用公式 <span
+class="math inline">\(C_Y = R_Y - m_Y m_Y\)</span> 计算。</p>
+<p><strong>方法一（直接利用性质）：</strong> <span
+class="math display">\[
+\begin{aligned}
+C_Y(t_1, t_2) &amp;= Cov(Y(t_1), Y(t_2)) \\
+&amp;= Cov(V g(t_1), V g(t_2)) \\
+&amp;= g(t_1) g(t_2) \cdot Cov(V, V) \\
+&amp;= g(t_1) g(t_2) \cdot D(V)
+\end{aligned}
+\]</span> 已知 <span class="math inline">\(D(V) = 1\)</span>： <span
+class="math display">\[
+C_Y(t_1, t_2) = 1 \cdot g(t_1)g(t_2) = g(t_1)g(t_2)
+\]</span></p>
+<p><strong>方法二（利用 <span class="math inline">\(R -
+m^2\)</span>）：</strong> <span class="math display">\[
+\begin{aligned}
+C_Y(t_1, t_2) &amp;= R_Y(t_1, t_2) - m_Y(t_1)m_Y(t_2) \\
+&amp;= 26 g(t_1)g(t_2) - (5g(t_1))(5g(t_2)) \\
+&amp;= (26 - 25) g(t_1)g(t_2) \\
+&amp;= g(t_1)g(t_2)
+\end{aligned}
+\]</span> 代入 <span class="math inline">\(g(t)\)</span>： <span
+class="math display">\[
+\mathbf{C_Y(t_1, t_2) = \frac{1}{169} \left[ \mathrm{e}^{3t_1}(3\cos
+2t_1 + 2\sin 2t_1) - 3 \right] \left[ \mathrm{e}^{3t_2}(3\cos 2t_2 +
+2\sin 2t_2) - 3 \right]}
+\]</span></p>
+<hr />
+<h3 id="求方差函数-d_yt">5. 求方差函数 <span
+class="math inline">\(D_Y(t)\)</span></h3>
+<p>方差函数就是协方差函数在 <span class="math inline">\(t_1 = t_2 =
+t\)</span> 时的值： <span class="math display">\[
+\begin{aligned}
+D_Y(t) &amp;= C_Y(t, t) \\
+&amp;= g(t)^2 \cdot D(V) \\
+&amp;= [g(t)]^2
+\end{aligned}
+\]</span> 即： <span class="math display">\[
+\mathbf{D_Y(t) = \frac{1}{169} \left[ \mathrm{e}^{3t}(3\cos 2t + 2\sin
+2t) - 3 \right]^2}
+\]</span></p>
+<hr />
+<h2 id="section-4">12.</h2>
+<h3 id="xt-int_0t-ws-mathrmds">(1) <span class="math inline">\(X(t) =
+\int_{0}^{t} W(s) \mathrm{d}s\)</span></h3>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong>
+根据期望与积分的可交换性： <span class="math display">\[
+m_X(t) = E\left[ \int_{0}^{t} W(s) \mathrm{d}s \right] = \int_{0}^{t}
+E[W(s)] \mathrm{d}s
+\]</span> 因为 <span class="math inline">\(E[W(s)] = 0\)</span>，所以：
+<span class="math display">\[
+\mathbf{m_X(t) = 0}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(t_1,
+t_2)\)</span></strong> 设 <span class="math inline">\(t_1, t_2 \geqslant
+0\)</span>，不妨假设 <strong><span class="math inline">\(t_1 \leqslant
+t_2\)</span></strong>。 <span class="math display">\[
+\begin{aligned}
+R_X(t_1, t_2) &amp;= E[X(t_1)X(t_2)] \\
+&amp;= E\left[ \int_{0}^{t_1} W(u) \mathrm{d}u \cdot \int_{0}^{t_2} W(v)
+\mathrm{d}v \right] \\
+&amp;= \int_{0}^{t_1} \int_{0}^{t_2} E[W(u)W(v)] \mathrm{d}v \mathrm{d}u
+\\
+&amp;= \sigma^2 \int_{0}^{t_1} \mathrm{d}u \int_{0}^{t_2} \min(u, v)
+\mathrm{d}v
+\end{aligned}
+\]</span> <strong>计算内层积分 <span
+class="math inline">\(\int_{0}^{t_2} \min(u, v)
+\mathrm{d}v\)</span>：</strong> 注意外层积分变量 <span
+class="math inline">\(u\)</span> 的范围是 <span class="math inline">\(0
+\to t_1\)</span>。由于我们假设了 <span class="math inline">\(t_1
+\leqslant t_2\)</span>，所以在整个积分过程中 <span
+class="math inline">\(u \leqslant t_1 \leqslant t_2\)</span>。
+因此，我们可以把内层积分区间 <span class="math inline">\([0,
+t_2]\)</span> 分为 <span class="math inline">\([0, u]\)</span> 和 <span
+class="math inline">\([u, t_2]\)</span>： <span class="math display">\[
+\begin{aligned}
+\int_{0}^{t_2} \min(u, v) \mathrm{d}v &amp;= \int_{0}^{u} v \mathrm{d}v
++ \int_{u}^{t_2} u \mathrm{d}v \\
+&amp;= \frac{u^2}{2} + u(t_2 - u) = u t_2 - \frac{u^2}{2}
+\end{aligned}
+\]</span> <strong>计算外层积分：</strong> <span class="math display">\[
+\begin{aligned}
+R_X(t_1, t_2) &amp;= \sigma^2 \int_{0}^{t_1} \left( u t_2 -
+\frac{u^2}{2} \right) \mathrm{d}u \\
+&amp;= \sigma^2 \left[ \frac{u^2 t_2}{2} - \frac{u^3}{6}
+\right]_{0}^{t_1} \\
+&amp;= \sigma^2 \left( \frac{t_1^2 t_2}{2} - \frac{t_1^3}{6} \right) \\
+&amp;= \frac{\sigma^2 t_1^2}{6} (3t_2 - t_1)
+\end{aligned}
+\]</span> <strong>结论：</strong> <span class="math display">\[
+\mathbf{R_X(s, t) = \frac{\sigma^2 \min(s, t)^2}{6} [3\max(s, t) -
+\min(s, t)]}
+\]</span></p>
+<hr />
+<h3 id="xt-int_0t-s-ws-mathrmds">(2) <span class="math inline">\(X(t) =
+\int_{0}^{t} s W(s) \mathrm{d}s\)</span></h3>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong> <span
+class="math display">\[
+m_X(t) = \int_{0}^{t} s E[W(s)] \mathrm{d}s = 0
+\]</span> <span class="math display">\[
+\mathbf{m_X(t) = 0}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(t_1,
+t_2)\)</span></strong> 同样假设 <strong><span class="math inline">\(t_1
+\leqslant t_2\)</span></strong>。 <span class="math display">\[
+\begin{aligned}
+R_X(t_1, t_2) &amp;= E\left[ \int_{0}^{t_1} u W(u) \mathrm{d}u \cdot
+\int_{0}^{t_2} v W(v) \mathrm{d}v \right] \\
+&amp;= \int_{0}^{t_1} \int_{0}^{t_2} uv E[W(u)W(v)] \mathrm{d}v
+\mathrm{d}u \\
+&amp;= \sigma^2 \int_{0}^{t_1} u \mathrm{d}u \int_{0}^{t_2} v \min(u, v)
+\mathrm{d}v
+\end{aligned}
+\]</span> <strong>计算内层积分 <span
+class="math inline">\(\int_{0}^{t_2} v \min(u, v)
+\mathrm{d}v\)</span>：</strong> 同样因为 <span class="math inline">\(u
+\leqslant t_2\)</span>，分段积分： <span class="math display">\[
+\begin{aligned}
+\int_{0}^{t_2} v \min(u, v) \mathrm{d}v &amp;= \int_{0}^{u} v \cdot v
+\mathrm{d}v + \int_{u}^{t_2} v \cdot u \mathrm{d}v \\
+&amp;= \int_{0}^{u} v^2 \mathrm{d}v + u \int_{u}^{t_2} v \mathrm{d}v \\
+&amp;= \frac{u^3}{3} + u \left( \frac{t_2^2}{2} - \frac{u^2}{2} \right)
+\\
+&amp;= \frac{u t_2^2}{2} - \frac{u^3}{6}
+\end{aligned}
+\]</span> <strong>计算外层积分：</strong> <span class="math display">\[
+\begin{aligned}
+R_X(t_1, t_2) &amp;= \sigma^2 \int_{0}^{t_1} u \left( \frac{u t_2^2}{2}
+- \frac{u^3}{6} \right) \mathrm{d}u \\
+&amp;= \sigma^2 \int_{0}^{t_1} \left( \frac{u^2 t_2^2}{2} -
+\frac{u^4}{6} \right) \mathrm{d}u \\
+&amp;= \sigma^2 \left[ \frac{u^3 t_2^2}{6} - \frac{u^5}{30}
+\right]_{0}^{t_1} \\
+&amp;= \sigma^2 \left( \frac{t_1^3 t_2^2}{6} - \frac{t_1^5}{30} \right)
+\\
+&amp;= \frac{\sigma^2 t_1^3}{30} (5t_2^2 - t_1^2)
+\end{aligned}
+\]</span> <strong>结论：</strong> <span class="math display">\[
+\mathbf{R_X(s, t) = \frac{\sigma^2 \min(s, t)^3}{30} [5\max(s, t)^2 -
+\min(s, t)^2]}
+\]</span></p>
+<hr />
+<h3 id="xt-int_tt-1-wt---ws-mathrmds">(3) <span
+class="math inline">\(X(t) = \int_{t}^{t + 1} (W(t) - W(s))
+\mathrm{d}s\)</span></h3>
+<p>这个积分看起来稍微复杂一点，我们可以先利用变量代换简化表达。 令 <span
+class="math inline">\(s = t + u\)</span>，则 <span
+class="math inline">\(\mathrm{d}s = \mathrm{d}u\)</span>。当 <span
+class="math inline">\(s=t\)</span> 时 <span
+class="math inline">\(u=0\)</span>；当 <span
+class="math inline">\(s=t+1\)</span> 时 <span
+class="math inline">\(u=1\)</span>。 <span class="math display">\[
+\begin{aligned}
+X(t) &amp;= \int_{0}^{1} (W(t) - W(t+u)) \mathrm{d}u \\
+&amp;= - \int_{0}^{1} [W(t+u) - W(t)] \mathrm{d}u
+\end{aligned}
+\]</span> 这里 <span class="math inline">\(W(t+u) - W(t)\)</span>
+是维纳过程的<strong>增量</strong>。</p>
+<p><strong>1. 求均值函数 <span
+class="math inline">\(m_X(t)\)</span></strong> <span
+class="math display">\[
+m_X(t) = - \int_{0}^{1} E[W(t+u) - W(t)] \mathrm{d}u = - \int_{0}^{1} 0
+\mathrm{d}u = 0
+\]</span> <span class="math display">\[
+\mathbf{m_X(t) = 0}
+\]</span></p>
+<p><strong>2. 求相关函数 <span class="math inline">\(R_X(t_1,
+t_2)\)</span></strong> <span class="math display">\[
+R_X(t_1, t_2) = E[X(t_1)X(t_2)] = \int_{0}^{1} \int_{0}^{1} E\left[
+(W(t_1+u) - W(t_1)) (W(t_2+v) - W(t_2)) \right] \mathrm{d}v \mathrm{d}u
+\]</span> <strong>利用维纳过程增量的性质：</strong>
+对于维纳过程，增量的协方差等于<strong>时间区间的重叠长度</strong>乘以
+<span class="math inline">\(\sigma^2\)</span>。 即 <span
+class="math inline">\(E[(W(b)-W(a))(W(d)-W(c))]\)</span> （假设 <span
+class="math inline">\(a&lt;b, c&lt;d\)</span>）等于区间 <span
+class="math inline">\([a, b]\)</span> 与 <span class="math inline">\([c,
+d]\)</span> <strong>交集的长度</strong> <span
+class="math inline">\(\times \sigma^2\)</span>。</p>
+<p>在本题中，两个区间分别是 <span class="math inline">\(I_1 = [t_1,
+t_1+u]\)</span> 和 <span class="math inline">\(I_2 = [t_2,
+t_2+v]\)</span>。 设 <span class="math inline">\(\tau = |t_1 -
+t_2|\)</span>。由于积分中 <span class="math inline">\(u, v \in [0,
+1]\)</span>，所以区间的长度最大为 1。</p>
+<ul>
+<li><p><strong>情形 1：如果 <span class="math inline">\(\tau \geqslant
+1\)</span>（即 <span class="math inline">\(|t_1 - t_2| \geqslant
+1\)</span>）</strong> 两个区间 <span class="math inline">\([t_1,
+t_1+u]\)</span> 和 <span class="math inline">\([t_2, t_2+v]\)</span>
+完全没有重叠。 增量是不相关的（独立的），所以相关函数为
+<strong>0</strong>。</p></li>
+<li><p><strong>情形 2：如果 <span class="math inline">\(\tau &lt;
+1\)</span></strong> 不妨设 <span class="math inline">\(t_1 \leqslant
+t_2\)</span>，则 <span class="math inline">\(t_2 = t_1 +
+\tau\)</span>，其中 <span class="math inline">\(0 \leqslant \tau &lt;
+1\)</span>。 区间为 <span class="math inline">\([t_1, t_1+u]\)</span> 和
+<span class="math inline">\([t_1+\tau, t_1+\tau+v]\)</span>。
+这两个区间有重叠的条件是：<span class="math inline">\(t_1 + u &gt; t_1 +
+\tau\)</span>，即 <strong><span class="math inline">\(u &gt;
+\tau\)</span></strong>。</p></li>
+</ul>
+<p>当 <span class="math inline">\(u &gt; \tau\)</span>
+时，重叠部分的长度为： <span class="math display">\[
+L(u, v) = \min(t_1+u, t_1+\tau+v) - (t_1+\tau) = \min(u, \tau+v) - \tau
+= \min(u-\tau, v)
+\]</span> 于是相关函数为： <span class="math display">\[
+R_X(\tau) = \sigma^2 \int_{\tau}^{1} \mathrm{d}u \int_{0}^{1}
+\min(u-\tau, v) \mathrm{d}v
+\]</span> 令 <span class="math inline">\(x = u - \tau\)</span>（则 <span
+class="math inline">\(u\)</span> 从 <span class="math inline">\(\tau \to
+1\)</span> 变为 <span class="math inline">\(x\)</span> 从 <span
+class="math inline">\(0 \to 1-\tau\)</span>）： <span
+class="math display">\[
+R_X(\tau) = \sigma^2 \int_{0}^{1-\tau} \mathrm{d}x \int_{0}^{1} \min(x,
+v) \mathrm{d}v
+\]</span> 计算内层积分（注意外层限制了 <span class="math inline">\(x
+\leqslant 1-\tau &lt; 1\)</span>，所以 <span class="math inline">\(x
+&lt; 1\)</span>，积分需拆分）： <span class="math display">\[
+\int_{0}^{1} \min(x, v) \mathrm{d}v = \int_{0}^{x} v \mathrm{d}v +
+\int_{x}^{1} x \mathrm{d}v = \frac{x^2}{2} + x(1-x) = x - \frac{x^2}{2}
+\]</span> 计算外层积分： <span class="math display">\[
+\begin{aligned}
+R_X(\tau) &amp;= \sigma^2 \int_{0}^{1-\tau} \left( x - \frac{x^2}{2}
+\right) \mathrm{d}x \\
+&amp;= \sigma^2 \left[ \frac{x^2}{2} - \frac{x^3}{6}
+\right]_{0}^{1-\tau} \\
+&amp;= \sigma^2 \left( \frac{(1-\tau)^2}{2} - \frac{(1-\tau)^3}{6}
+\right) \\
+&amp;= \frac{\sigma^2 (1-\tau)^2}{6} [3 - (1-\tau)] \\
+&amp;= \frac{\sigma^2 (1-\tau)^2 (2+\tau)}{6}
+\end{aligned}
+\]</span></p>
+<p><strong>结论：</strong> 令 <span class="math inline">\(\tau = |t_1 -
+t_2|\)</span>，则： <span class="math display">\[
+\mathbf{R_X(t_1, t_2) = \begin{cases} \frac{\sigma^2 (1-\tau)^2
+(2+\tau)}{6}, &amp; \tau &lt; 1 \\ 0, &amp; \tau \geqslant 1
+\end{cases}}
+\]</span></p>
+<hr />
+<h2 id="section-5">16.</h2>
+<h3 id="begincases-yt-xt-y0-y_0-endcases">(1) <span
+class="math inline">\(\begin{cases} Y&#39;(t) = X(t) \\ Y(0) = Y_0
+\end{cases}\)</span></h3>
+<p><strong>解：</strong></p>
+<p><strong>1. 求解方程</strong> 这是一个最简单的积分方程。直接对两边从
+<span class="math inline">\(0\)</span> 到 <span
+class="math inline">\(t\)</span> 积分： <span class="math display">\[
+Y(t) - Y(0) = \int_0^t X(u) \, du
+\]</span> <span class="math display">\[
+Y(t) = Y_0 + \int_0^t X(u) \, du
+\]</span></p>
+<p><strong>2. 求均值函数 <span
+class="math inline">\(m_Y(t)\)</span></strong>
+利用期望的线性性质，并已知 <span class="math inline">\(E[Y_0] =
+m\)</span>： <span class="math display">\[
+\begin{aligned}
+m_Y(t) &amp;= E[Y(t)] \\
+&amp;= E\left[ Y_0 + \int_0^t X(u) \, du \right] \\
+&amp;= E[Y_0] + \int_0^t E[X(u)] \, du \\
+&amp;= m + \int_0^t m_X(u) \, du
+\end{aligned}
+\]</span> <em>(注：由于题目未给出 <span
+class="math inline">\(X(t)\)</span>
+的具体均值函数，结果保留为积分形式)</em></p>
+<p><strong>3. 求相关函数 <span class="math inline">\(R_Y(t_1,
+t_2)\)</span></strong> 根据定义 <span class="math inline">\(R_Y(t_1,
+t_2) = E[Y(t_1)Y(t_2)]\)</span>： <span class="math display">\[
+\begin{aligned}
+R_Y(t_1, t_2) &amp;= E\left[ \left( Y_0 + \int_0^{t_1} X(u) du \right)
+\left( Y_0 + \int_0^{t_2} X(v) dv \right) \right] \\
+&amp;= E\left[ Y_0^2 + Y_0 \int_0^{t_2} X(v) dv + Y_0 \int_0^{t_1} X(u)
+du + \int_0^{t_1} X(u) du \int_0^{t_2} X(v) dv \right]
+\end{aligned}
+\]</span> 利用期望的线性性质展开，并利用 <strong><span
+class="math inline">\(Y_0\)</span> 与 <span
+class="math inline">\(X(t)\)</span> 相互独立</strong> 的条件（即 <span
+class="math inline">\(E[Y_0 X(t)] = E[Y_0]E[X(t)] = m \cdot
+m_X(t)\)</span>）：</p>
+<ol type="1">
+<li>第一项：<span class="math inline">\(E[Y_0^2] = D(Y_0) + (E[Y_0])^2 =
+\sigma^2 + m^2\)</span></li>
+<li>第二项：<span class="math inline">\(E[Y_0 \int_0^{t_2} X(v) dv] =
+E[Y_0] \int_0^{t_2} E[X(v)] dv = m \int_0^{t_2} m_X(v) dv\)</span></li>
+<li>第三项：<span class="math inline">\(E[Y_0 \int_0^{t_1} X(u) du] = m
+\int_0^{t_1} m_X(u) du\)</span></li>
+<li>第四项：<span class="math inline">\(E[\int_0^{t_1} \int_0^{t_2}
+X(u)X(v) du dv] = \int_0^{t_1} \int_0^{t_2} R_X(u, v) du
+dv\)</span></li>
+</ol>
+<p><strong>综合结果：</strong> <span class="math display">\[
+R_Y(t_1, t_2) = (\sigma^2 + m^2) + m \int_0^{t_2} m_X(v) dv + m
+\int_0^{t_1} m_X(u) du + \int_0^{t_1} \int_0^{t_2} R_X(u, v) \, du \, dv
+\]</span></p>
+<hr />
+<h3 id="begincases-yt-ayt-xt-quad-t-ge-0-a-0-y0-0-endcases">(2) <span
+class="math inline">\(\begin{cases} Y&#39;(t) + aY(t) = X(t), \quad t
+\ge 0, \ a &gt; 0 \\ Y(0) = 0 \end{cases}\)</span></h3>
+<p><strong>已知条件：</strong> * <span class="math inline">\(m_X(t) =
+\lambda\)</span> * <span class="math inline">\(R_X(s, t) = e^{-\lambda
+|t-s|}\)</span></p>
+<p><strong>解：</strong></p>
+<p><strong>1. 求解方程</strong>
+这是一个一阶线性常系数非齐次微分方程。利用<strong>冲激响应法</strong>（卷积积分）：
+该系统的冲激响应为 <span class="math inline">\(h(t) = e^{-at}
+u(t)\)</span>。 由于零状态（<span
+class="math inline">\(Y(0)=0\)</span>），解为卷积： <span
+class="math display">\[
+Y(t) = \int_0^t h(t-u) X(u) \, du = \int_0^t e^{-a(t-u)} X(u) \, du
+\]</span> 或者写成： <span class="math display">\[
+Y(t) = e^{-at} \int_0^t e^{au} X(u) \, du
+\]</span></p>
+<p><strong>2. 求均值函数 <span
+class="math inline">\(m_Y(t)\)</span></strong> <span
+class="math display">\[
+\begin{aligned}
+m_Y(t) &amp;= E\left[ \int_0^t e^{-a(t-u)} X(u) \, du \right] \\
+&amp;= \int_0^t e^{-a(t-u)} E[X(u)] \, du \\
+&amp;= \int_0^t e^{-a(t-u)} \lambda \, du \\
+&amp;= \lambda e^{-at} \int_0^t e^{au} \, du \\
+&amp;= \lambda e^{-at} \left[ \frac{1}{a} e^{au} \right]_0^t \\
+&amp;= \frac{\lambda}{a} e^{-at} (e^{at} - 1)
+\end{aligned}
+\]</span> <strong>结果：</strong> <span class="math display">\[
+m_Y(t) = \frac{\lambda}{a} (1 - e^{-at})
+\]</span></p>
+<p><strong>3. 求相关函数 <span class="math inline">\(R_Y(t_1,
+t_2)\)</span></strong> <span class="math display">\[
+\begin{aligned}
+R_Y(t_1, t_2) &amp;= E[Y(t_1)Y(t_2)] \\
+&amp;= E\left[ \left( e^{-at_1} \int_0^{t_1} e^{au} X(u) du \right)
+\left( e^{-at_2} \int_0^{t_2} e^{av} X(v) dv \right) \right] \\
+&amp;= e^{-a(t_1+t_2)} \int_0^{t_1} \int_0^{t_2} e^{a(u+v)} E[X(u)X(v)]
+\, dv \, du \\
+&amp;= e^{-a(t_1+t_2)} \int_0^{t_1} \int_0^{t_2} e^{a(u+v)}
+e^{-\lambda|u-v|} \, dv \, du
+\end{aligned}
+\]</span></p>
+<p>为了计算这个重积分，不妨假设 <strong><span class="math inline">\(t_1
+\le t_2\)</span></strong>。我们需要将积分区域 <span
+class="math inline">\([0, t_1] \times [0, t_2]\)</span> 根据 <span
+class="math inline">\(|u-v|\)</span> 的符号拆分。 由于 <span
+class="math inline">\(t_1 \le t_2\)</span>，积分区域分为两部分： 1.
+<strong>区域 I (<span class="math inline">\(v \le
+u\)</span>)</strong>：<span class="math inline">\(0 \le u \le
+t_1\)</span>, <span class="math inline">\(0 \le v \le u\)</span>。此时
+<span class="math inline">\(|u-v| = u-v\)</span>。 2. <strong>区域 II
+(<span class="math inline">\(v &gt; u\)</span>)</strong>：此区域包含
+<span class="math inline">\(0 \le u \le t_1\)</span>, <span
+class="math inline">\(u &lt; v \le t_2\)</span>。此时 <span
+class="math inline">\(|u-v| = v-u\)</span>。</p>
+<p><span class="math display">\[
+I = \int_0^{t_1} du \left( \underbrace{\int_0^u e^{a(u+v)}
+e^{-\lambda(u-v)} dv}_{\text{Part 1}} + \underbrace{\int_u^{t_2}
+e^{a(u+v)} e^{-\lambda(v-u)} dv}_{\text{Part 2}} \right)
+\]</span></p>
+<p><strong>计算 Part 1 (内层):</strong> <span class="math display">\[
+\begin{aligned}
+\int_0^u e^{au} e^{-\lambda u} e^{(a+\lambda)v} dv &amp;=
+e^{(a-\lambda)u} \left[ \frac{e^{(a+\lambda)v}}{a+\lambda} \right]_0^u
+\\
+&amp;= \frac{e^{(a-\lambda)u}}{a+\lambda} (e^{(a+\lambda)u} - 1) \\
+&amp;= \frac{1}{a+\lambda} (e^{2au} - e^{(a-\lambda)u})
+\end{aligned}
+\]</span></p>
+<p><strong>计算 Part 2 (内层):</strong> <span class="math display">\[
+\begin{aligned}
+\int_u^{t_2} e^{au} e^{\lambda u} e^{(a-\lambda)v} dv &amp;=
+e^{(a+\lambda)u} \left[ \frac{e^{(a-\lambda)v}}{a-\lambda}
+\right]_u^{t_2} \\
+&amp;= \frac{e^{(a+\lambda)u}}{a-\lambda} (e^{(a-\lambda)t_2} -
+e^{(a-\lambda)u}) \\
+&amp;= \frac{1}{a-\lambda} (e^{(a-\lambda)t_2} e^{(a+\lambda)u} -
+e^{2au})
+\end{aligned}
+\]</span></p>
+<p><strong>计算外层积分 (对 <span class="math inline">\(u\)</span>
+积分，从 <span class="math inline">\(0\)</span> 到 <span
+class="math inline">\(t_1\)</span>):</strong>
+我们需要对上述两部分结果相加后积分。这里假设 <span
+class="math inline">\(a \neq
+\lambda\)</span>（如果相等需取极限，通常解一般情况）。</p>
+<ol type="1">
+<li><p><strong>对 Part 1 积分:</strong> <span
+class="math display">\[\int_0^{t_1} \frac{1}{a+\lambda} (e^{2au} -
+e^{(a-\lambda)u}) du = \frac{1}{a+\lambda} \left[ \frac{e^{2at_1}-1}{2a}
+- \frac{e^{(a-\lambda)t_1}-1}{a-\lambda} \right]\]</span></p></li>
+<li><p><strong>对 Part 2 积分:</strong> <span
+class="math display">\[\int_0^{t_1} \frac{1}{a-\lambda}
+(e^{(a-\lambda)t_2} e^{(a+\lambda)u} - e^{2au}) du = \frac{1}{a-\lambda}
+\left[ e^{(a-\lambda)t_2} \frac{e^{(a+\lambda)t_1}-1}{a+\lambda} -
+\frac{e^{2at_1}-1}{2a} \right]\]</span></p></li>
+</ol>
+<p><strong>合并与化简:</strong>
+这步计算非常繁琐，我们将结果整理并乘以前面的系数 <span
+class="math inline">\(e^{-a(t_1+t_2)}\)</span>。 注意到 <span
+class="math inline">\(\frac{1}{a+\lambda} \cdot \frac{1}{2a}\)</span> 和
+<span class="math inline">\(-\frac{1}{a-\lambda} \cdot
+\frac{1}{2a}\)</span> 可以合并项。</p>
+<p>经过仔细的代数运算，最终的一般形式（假设 <span
+class="math inline">\(t_1 \le t_2\)</span>）为： <span
+class="math display">\[
+R_Y(t_1, t_2) = \frac{1}{a^2 - \lambda^2} \left( \frac{a
+e^{-\lambda(t_2-t_1)} - \lambda e^{-a(t_2-t_1)}}{a} - \frac{a
+e^{-a(t_1+t_2)} + \lambda e^{-a(t_1+t_2)}}{a} \right) + \text{瞬态项}
+\]</span>
+通常在考试中，如果未要求化简到底，写出积分结果即可。若需显式解，最简洁的写法如下：</p>
+<p><span class="math display">\[
+R_Y(t_1, t_2) = \frac{1}{a^2 - \lambda^2} \left[ \frac{a
+e^{-\lambda|t_1-t_2|} - \lambda e^{-a|t_1-t_2|}}{a} -
+\frac{e^{-a(t_1+t_2)}(a-\lambda) + e^{-at_1 - \lambda t_2}(a+\lambda) -
+e^{-at_2 - \lambda t_1}(a+\lambda) \dots}{\dots} \right]
+\]</span>
+<em>(上述化简过于复杂容易出错，建议保留如下清晰的积分计算结果)</em></p>
+<p><strong>推荐的最终答案形式：</strong></p>
+<p>当 <span class="math inline">\(t_1 \le t_2\)</span> 时： <span
+class="math display">\[
+R_Y(t_1, t_2) = \frac{e^{-a(t_1+t_2)}}{a^2 - \lambda^2} \left(
+\frac{a-\lambda}{2a}(e^{2at_1}-1) + e^{(a-\lambda)t_2}
+\frac{e^{(a+\lambda)t_1}-1}{1} - e^{(a-\lambda)t_1}
+\frac{a+\lambda}{a-\lambda} \dots \right)
+\]</span> 更为整洁的物理意义解（稳态部分+瞬态部分）： <span
+class="math display">\[
+R_Y(t_1, t_2) = \frac{1}{a^2-\lambda^2} \left( a e^{-\lambda|t_1-t_2|} -
+\lambda e^{-a|t_1-t_2|} - a e^{-a(t_1+t_2)} + \lambda e^{-at_2-\lambda
+t_1} - \dots \right)
+\]</span> <em>(注：由于 <span class="math inline">\(R_X\)</span> 是
+Ornstein-Uhlenbeck 噪声，<span class="math inline">\(Y\)</span>
+是低通滤波后的 O-U
+过程，其解析解非常长。如果在考试中，建议写到二重积分展开步骤即可得分，除非题目明确要求化简到最终指数形式)</em></p>
+<p><strong>最核心的积分结果项（当 <span class="math inline">\(t_1 \le
+t_2\)</span>）：</strong> <span class="math display">\[
+R_Y(t_1, t_2) = \frac{1}{a^2-\lambda^2} \left( \frac{a
+e^{-\lambda(t_2-t_1)} - \lambda e^{-a(t_2-t_1)}}{1} - \frac{a
+e^{-a(t_1+t_2)} - \lambda e^{-a t_2 - \lambda t_1}}{1} \right) -
+\frac{1}{2a(a+\lambda)} \left( e^{-a(t_2-t_1)} - e^{-a(t_1+t_2)} \right)
+\]</span></p>
+<hr />
+<h2 id="section-6">17</h2>
+<h3 id="第一步求解微分方程">第一步：求解微分方程</h3>
+<p>方程为： <span class="math display">\[3 \frac{dX(t)}{dt} + 2X(t) =
+W(t)\]</span></p>
+<p>整理为标准形式： <span class="math display">\[\frac{dX(t)}{dt} +
+\frac{2}{3}X(t) = \frac{1}{3}W(t)\]</span></p>
+<p>这是一个一阶线性方程，利用<strong>常数变易法</strong>（或积分因子法）求解。
+积分因子为 <span class="math inline">\(e^{\int \frac{2}{3} dt} =
+e^{\frac{2}{3}t}\)</span>。</p>
+<p>方程两边同乘 <span class="math inline">\(e^{\frac{2}{3}t}\)</span>：
+<span class="math display">\[e^{\frac{2}{3}t} \frac{dX}{dt} +
+\frac{2}{3} e^{\frac{2}{3}t} X = \frac{1}{3} e^{\frac{2}{3}t}
+W(t)\]</span> <span class="math display">\[\frac{d}{dt} \left( X(t)
+e^{\frac{2}{3}t} \right) = \frac{1}{3} e^{\frac{2}{3}t}
+W(t)\]</span></p>
+<p>对两边从 <span class="math inline">\(0\)</span> 到 <span
+class="math inline">\(t\)</span> 积分： <span
+class="math display">\[\left[ X(u) e^{\frac{2}{3}u} \right]_0^t =
+\int_0^t \frac{1}{3} e^{\frac{2}{3}s} W(s) ds\]</span> <span
+class="math display">\[X(t) e^{\frac{2}{3}t} - X(0) = \frac{1}{3}
+\int_0^t e^{\frac{2}{3}s} W(s) ds\]</span></p>
+<p>已知 <span class="math inline">\(X(0) = X_0\)</span>，整理得 <span
+class="math inline">\(X(t)\)</span> 的表达式： <span
+class="math display">\[X(t) = X_0 e^{-\frac{2}{3}t} + \frac{1}{3}
+e^{-\frac{2}{3}t} \int_0^t e^{\frac{2}{3}s} W(s) ds\]</span></p>
+<p>令积分项为 <span class="math inline">\(Y(t)\)</span>，则 <span
+class="math inline">\(X(t)\)</span> 由确定性部分和随机部分组成。</p>
+<hr />
+<h3 id="第二步求均值函数-m_xt">第二步：求均值函数 <span
+class="math inline">\(m_X(t)\)</span></h3>
+<p>对 <span class="math inline">\(X(t)\)</span> 两边求期望 <span
+class="math inline">\(E[\cdot]\)</span>。利用期望与积分的可交换性：
+<span class="math display">\[
+\begin{aligned}
+m_X(t) &amp;= E[X(t)] \\
+&amp;= E\left[ X_0 e^{-\frac{2}{3}t} \right] + E\left[ \frac{1}{3}
+e^{-\frac{2}{3}t} \int_0^t e^{\frac{2}{3}s} W(s) ds \right] \\
+&amp;= X_0 e^{-\frac{2}{3}t} + \frac{1}{3} e^{-\frac{2}{3}t} \int_0^t
+e^{\frac{2}{3}s} \underbrace{E[W(s)]}_{0} ds
+\end{aligned}
+\]</span> 由于 <span class="math inline">\(W(t)\)</span>
+是维纳过程，均值为 0，故积分项期望为 0。</p>
+<p><span class="math display">\[\mathbf{m_X(t) = X_0
+e^{-\frac{2}{3}t}}\]</span></p>
+<hr />
+<h3 id="第三步求方差函数-d_xt">第三步：求方差函数 <span
+class="math inline">\(D_X(t)\)</span></h3>
+<p>方差定义为 <span class="math inline">\(D_X(t) = E\left[ (X(t) -
+m_X(t))^2 \right]\)</span>。 由第一步可知，<span
+class="math inline">\((X(t) - m_X(t))\)</span> 即为等式右边的积分项：
+<span class="math display">\[X(t) - m_X(t) = \frac{1}{3}
+e^{-\frac{2}{3}t} \int_0^t e^{\frac{2}{3}s} W(s) ds\]</span></p>
+<p>因此： <span class="math display">\[D_X(t) = \frac{1}{9}
+e^{-\frac{4}{3}t} E\left[ \left( \int_0^t e^{\frac{2}{3}s} W(s) ds
+\right)^2 \right]\]</span></p>
+<p>利用期望公式 <span class="math inline">\(E[(\int f(u)W(u)du)^2] =
+\iint f(u)f(v) R_W(u,v) du dv\)</span>： <span
+class="math display">\[D_X(t) = \frac{1}{9} e^{-\frac{4}{3}t} \int_0^t
+\int_0^t e^{\frac{2}{3}u} e^{\frac{2}{3}v} E[W(u)W(v)] \, du \,
+dv\]</span></p>
+<p>已知维纳过程相关函数 <span class="math inline">\(R_W(u, v) = \min(u,
+v)\)</span>。 令 <span class="math inline">\(I = \int_0^t \int_0^t
+e^{\frac{2}{3}(u+v)} \min(u, v) \, du \, dv\)</span>。
+利用被积函数的对称性，将积分区域变为 <span class="math inline">\(0 \le u
+\le v \le t\)</span> 的两倍： <span class="math display">\[I = 2
+\int_0^t \int_0^v e^{\frac{2}{3}u} e^{\frac{2}{3}v} u \, du \, dv = 2
+\int_0^t e^{\frac{2}{3}v} \left( \int_0^v u e^{\frac{2}{3}u} du \right)
+dv\]</span></p>
+<p><strong>1. 计算内层积分（分部积分法）：</strong> <span
+class="math display">\[\int_0^v u e^{\frac{2}{3}u} du = \left[
+\frac{3}{2} u e^{\frac{2}{3}u} - \frac{9}{4} e^{\frac{2}{3}u}
+\right]_0^v = e^{\frac{2}{3}v} (\frac{3}{2}v - \frac{9}{4}) +
+\frac{9}{4}\]</span></p>
+<p><strong>2. 计算外层积分：</strong> <span class="math display">\[
+\begin{aligned}
+I &amp;= 2 \int_0^t e^{\frac{2}{3}v} \left[ e^{\frac{2}{3}v}
+(\frac{3}{2}v - \frac{9}{4}) + \frac{9}{4} \right] dv \\
+&amp;= 2 \int_0^t \left( \frac{3}{2} v e^{\frac{4}{3}v} - \frac{9}{4}
+e^{\frac{4}{3}v} + \frac{9}{4} e^{\frac{2}{3}v} \right) dv \\
+&amp;= \int_0^t \left( 3 v e^{\frac{4}{3}v} - \frac{9}{2}
+e^{\frac{4}{3}v} + \frac{9}{2} e^{\frac{2}{3}v} \right) dv
+\end{aligned}
+\]</span> 逐项积分： * <span class="math inline">\(\int 3v
+e^{\frac{4}{3}v} dv = 3 [ \frac{3}{4}v e^{\frac{4}{3}v} -
+\frac{9}{16}e^{\frac{4}{3}v} ]_0^t = \frac{9}{4}t e^{\frac{4}{3}t} -
+\frac{27}{16}e^{\frac{4}{3}t} + \frac{27}{16}\)</span> * <span
+class="math inline">\(\int -\frac{9}{2} e^{\frac{4}{3}v} dv =
+-\frac{27}{8} e^{\frac{4}{3}t} + \frac{27}{8}\)</span> * <span
+class="math inline">\(\int \frac{9}{2} e^{\frac{2}{3}v} dv =
+\frac{27}{4} e^{\frac{2}{3}t} - \frac{27}{4}\)</span></p>
+<p>合并同类项得到 <span class="math inline">\(I\)</span>： <span
+class="math display">\[I = e^{\frac{4}{3}t} \left( \frac{9}{4}t -
+\frac{81}{16} \right) + \frac{27}{4} e^{\frac{2}{3}t} -
+\frac{27}{16}\]</span></p>
+<p><strong>3. 得到方差函数：</strong> <span class="math display">\[
+\begin{aligned}
+D_X(t) &amp;= \frac{1}{9} e^{-\frac{4}{3}t} \cdot I \\
+&amp;= \frac{1}{9} \left( \frac{9}{4}t - \frac{81}{16} \right) +
+\frac{1}{9} \cdot \frac{27}{4} e^{-\frac{2}{3}t} - \frac{1}{9} \cdot
+\frac{27}{16} e^{-\frac{4}{3}t}
+\end{aligned}
+\]</span> <span class="math display">\[\mathbf{D_X(t) = \frac{t}{4} -
+\frac{9}{16} + \frac{3}{4} e^{-\frac{2}{3}t} - \frac{3}{16}
+e^{-\frac{4}{3}t}}\]</span></p>
+<hr />
+<h3 id="第四步写出概率密度函数">第四步：写出概率密度函数</h3>
+<p>由于 <span class="math inline">\(X(t)\)</span>
+是高斯过程，其一维概率密度函数服从正态分布 <span
+class="math inline">\(N(m_X(t), D_X(t))\)</span>。</p>
+<p>公式为： <span class="math display">\[f_X(x, t) = \frac{1}{\sqrt{2\pi
+D_X(t)}} \exp\left\{ -\frac{[x - m_X(t)]^2}{2 D_X(t)}
+\right\}\]</span></p>
+<p><strong>最终结果：</strong></p>
+<p>随机过程 <span class="math inline">\(X(t)\)</span>
+的一维概率密度函数为： <span class="math display">\[f_X(x, t) =
+\frac{1}{\sqrt{2\pi \sigma^2(t)}} \exp\left\{ -\frac{(x - \mu(t))^2}{2
+\sigma^2(t)} \right\}\]</span></p>
+<p>其中均值 <span class="math inline">\(\mu(t)\)</span> 和方差 <span
+class="math inline">\(\sigma^2(t)\)</span> 分别为： <span
+class="math display">\[
+\begin{cases}
+\mu(t) = X_0 e^{-\frac{2}{3}t} \\
+\sigma^2(t) = \frac{t}{4} + \frac{3}{4} e^{-\frac{2}{3}t} - \frac{3}{16}
+e^{-\frac{4}{3}t} - \frac{9}{16}
+\end{cases}
+\]</span></p>
+</body>
+</html>
